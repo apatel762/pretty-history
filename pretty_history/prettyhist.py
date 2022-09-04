@@ -1,5 +1,7 @@
 import os
 import platform
+import string
+import unicodedata
 from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import date
@@ -9,6 +11,18 @@ from typing import List
 
 from browserexport.merge import read_and_merge
 from browserexport.model import Visit
+
+
+def clean(filename) -> str:
+    # keep only valid ascii chars
+    cleaned_filename: str = (
+        unicodedata.normalize("NFKD", filename).encode("ASCII", "ignore").decode()
+    )
+
+    # keep only whitelisted chars
+    whitelist: str = ":/\"'|-_.() %s%s" % (string.ascii_letters, string.digits)
+    cleaned_filename: str = "".join(c for c in cleaned_filename if c in whitelist)
+    return cleaned_filename[:255]
 
 
 def get_dumping_dir() -> Path:
@@ -21,11 +35,11 @@ def get_dumping_dir() -> Path:
     return cache_path
 
 
-def to_markdown_link(history_event: Visit) -> str:
-    if history_event.metadata is None:
-        return f"<{history_event.url}>"
+def to_markdown_link(event: Visit) -> str:
+    if event.metadata is not None and len(event.metadata.title) > 0:
+        return f"[{clean(event.metadata.title)}]({event.url})"
     else:
-        return f"[{history_event.metadata.title}]({history_event.url})"
+        return f"<{event.url}>"
 
 
 def prettify(history_json: Path) -> None:
