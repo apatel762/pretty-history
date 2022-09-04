@@ -1,0 +1,26 @@
+# Ignore everything, but still check in sub-directories
+*
+!*/
+
+.idea
+
+# ----------------------
+
+!.gitignore
+!README.md
+!LICENSE
+
+# GitHub-specific files
+!.github/dependabot.yml
+
+# VSCode suggested extensions
+!.vscode/extensions.json
+
+# ----------------------
+
+!*.py
+
+!.pre-commit-config.yaml
+!pyproject.toml
+!poetry.lock
+!setup.cfg

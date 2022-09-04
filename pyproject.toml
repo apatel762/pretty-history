@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pretty-history"
+version = "0.1.0"
+description = "Generate a pretty view of your browser history from a JSON export"
+authors = ["Arjun Patel <relay-git-1LKQ1GqLp0Nn4@aspatel.com>"]
+license = "AGPL-3.0-or-later"
+readme = "README.md"
+repository = "https://github.com/apatel762/pretty-history"
+
+[tool.poetry.scripts]
+prettyhist = "pretty-history.main:main"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.20.0"
+pytest = "^7.1.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
