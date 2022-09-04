@@ -8,6 +8,7 @@ from datetime import date
 from datetime import datetime
 from pathlib import Path
 from typing import List
+from urllib.parse import quote_plus
 
 from browserexport.merge import read_and_merge
 from browserexport.model import Visit
@@ -36,10 +37,12 @@ def get_dumping_dir() -> Path:
 
 
 def to_markdown_link(event: Visit) -> str:
-    if event.metadata is not None and len(event.metadata.title) > 0:
-        return f"[{clean(event.metadata.title)}]({event.url})"
-    else:
+    if event.metadata is None:
         return f"<{event.url}>"
+    if "file://" in event.url:
+        return f"*{event.url.rstrip('file://')}*"
+    if len(event.metadata.title) > 0:
+        return f"[{clean(event.metadata.title)}]({quote_plus(event.url)})"
 
 
 def prettify(history_json: Path) -> None:
