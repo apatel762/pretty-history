@@ -50,7 +50,7 @@ def to_markdown_link(event: Visit) -> str:
     if event.metadata is None:
         return f"<{event.url}>"
     if "file://" in event.url:
-        return f"*{clean(event.url.rstrip('file://'))}*"
+        return f"*{clean(event.url.lstrip('file://'))}*"
     if len(event.metadata.title) > 0:
         return f"[{clean(event.metadata.title)}]({clean_url(url=event.url)})"
 
