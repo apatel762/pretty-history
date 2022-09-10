@@ -8,7 +8,8 @@ from datetime import date
 from datetime import datetime
 from pathlib import Path
 from typing import List
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, ParseResult
+from urllib.parse import urlparse
 
 from browserexport.merge import read_and_merge
 from browserexport.model import Visit
@@ -29,6 +30,12 @@ def clean(s: str) -> str:
     return cleaned[:255]
 
 
+def clean_url(url: str) -> str:
+    parsed: ParseResult = urlparse(url=url)
+    parsed._replace(query=quote_plus(parsed.query), fragment=quote_plus(parsed.fragment))
+    return parsed.geturl()
+
+
 def get_dumping_dir() -> Path:
     cache_home: str = os.getenv("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
 
@@ -45,7 +52,7 @@ def to_markdown_link(event: Visit) -> str:
     if "file://" in event.url:
         return f"*{clean(event.url.rstrip('file://'))}*"
     if len(event.metadata.title) > 0:
-        return f"[{clean(event.metadata.title)}]({quote_plus(event.url)})"
+        return f"[{clean(event.metadata.title)}]({clean_url(url=event.url)})"
 
 
 def prettify(history_json: Path) -> None:
