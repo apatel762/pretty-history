@@ -24,11 +24,13 @@ def main():
         type=pathlib.Path,
         required=False,
         metavar="./folder",
-        help="The absolute or relative path to a folder that you want to send the generated output to."
+        help="The absolute or relative path to a folder that you want to send the generated output to.",
     )
     args: Namespace = parser.parse_args()
 
-    prettyhist.prettify(history_json=args.json_file, dumping_folder=args.destination_folder)
+    prettyhist.prettify(
+        history_json=args.json_file, dumping_folder=args.destination_folder
+    )
 
 
 if __name__ == "__main__":
