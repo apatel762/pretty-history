@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from datetime import date
 from datetime import datetime
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 from urllib.parse import quote_plus, ParseResult
 from urllib.parse import urlparse
 
@@ -55,12 +55,12 @@ def to_markdown_link(event: Visit) -> str:
         return f"[{clean(event.metadata.title)}]({clean_url(url=event.url)})"
 
 
-def prettify(history_json: Path) -> None:
+def prettify(history_json: Path, dumping_folder: Optional[Path]) -> None:
     grouped: OrderedDict[date, List[Visit]] = OrderedDict()
     for visit in read_and_merge([history_json]):  # type: Visit
         grouped.setdefault(visit.dt.date(), []).append(visit)
 
-    out: Path = get_dumping_dir()
+    out: Path = dumping_folder if dumping_folder is not None else get_dumping_dir()
 
     for key, val in grouped.items():
         page: Page = Page(dt=key, visits=val)
