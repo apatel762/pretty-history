@@ -12,6 +12,7 @@
 
 # GitHub-specific files
 !.github/dependabot.yml
+!.github/workflows/pytest.yml
 
 # VSCode suggested extensions
 !.vscode/extensions.json
