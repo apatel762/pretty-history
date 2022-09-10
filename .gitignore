@@ -24,3 +24,6 @@
 !pyproject.toml
 !poetry.lock
 !setup.cfg
+
+!tests/resources/*.json
+!tests/resources/*.md
