@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://docs.pytest.org/en/7.1.x/how-to/monkeypatch.html?highlight=mock",
+    "dt": 1662810576.794516,
+    "metadata": {
+      "title": "How to monkeypatch/mock modules and environments \u2014 pytest documentation",
+      "description": null,
+      "preview_image": null,
+      "duration": null
+    }
+  },
+  {
+    "url": "file:///var/home/apatel/Documents/Chrome/index.html",
+    "dt": 1662810681.385935,
+    "metadata": {
+      "title": "Arjun's Home",
+      "description": null,
+      "preview_image": null,
+      "duration": null
+    }
+  },
+  {
+    "url": "https://docs.python.org/3/library/argparse.html",
+    "dt": 1662810798.332466,
+    "metadata": {
+      "title": "argparse \u2014 Parser for command-line options, arguments and sub-commands \u2014 Python 3.10.7 documentation",
+      "description": null,
+      "preview_image": null,
+      "duration": null
+    }
+  },
+  {
+    "url": "https://docs.python.org/3/library/argparse.html#the-add-argument-method",
+    "dt": 1662810819.862087,
+    "metadata": {
+      "title": "argparse \u2014 Parser for command-line options, arguments and sub-commands \u2014 Python 3.10.7 documentation",
+      "description": null,
+      "preview_image": null,
+      "duration": null
+    }
+  },
+  {
+    "url": "https://github.com/apatel762/pretty-history",
+    "dt": 1662811178.480839,
+    "metadata": {
+      "title": "apatel762/pretty-history: Generate a pretty view of your browser history from a JSON export",
+      "description": null,
+      "preview_image": null,
+      "duration": null
+    }
+  },
+  {
+    "url": "https://github.com/seanbreckenridge/browserexport",
+    "dt": 1662811196.919424,
+    "metadata": {
+      "title": "seanbreckenridge/browserexport: backup and parse browser history databases (chrome, firefox, safari, and other chrome/firefox derivatives)",
+      "description": null,
+      "preview_image": null,
+      "duration": null
+    }
+  }
+]
