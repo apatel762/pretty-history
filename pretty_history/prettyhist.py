@@ -7,8 +7,10 @@ from dataclasses import dataclass
 from datetime import date
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
-from urllib.parse import quote_plus, ParseResult
+from typing import List
+from typing import Optional
+from urllib.parse import ParseResult
+from urllib.parse import quote_plus
 from urllib.parse import urlparse
 
 from browserexport.merge import read_and_merge
@@ -32,7 +34,9 @@ def clean(s: str) -> str:
 
 def clean_url(url: str) -> str:
     parsed: ParseResult = urlparse(url=url)
-    parsed._replace(query=quote_plus(parsed.query), fragment=quote_plus(parsed.fragment))
+    parsed._replace(
+        query=quote_plus(parsed.query), fragment=quote_plus(parsed.fragment)
+    )
     return parsed.geturl()
 
 
@@ -93,7 +97,6 @@ class Page:
                     f"- {datetime.strftime(visit.dt, '%H:%M')} {to_markdown_link(visit)}"
                 )
                 f.write("\n")
-            f.write("\n")
 
     @property
     def page_name(self) -> str:
