@@ -14,16 +14,19 @@ from browserexport.merge import read_and_merge
 from browserexport.model import Visit
 
 
-def clean(filename) -> str:
+def clean(s: str) -> str:
     # keep only valid ascii chars
-    cleaned_filename: str = (
-        unicodedata.normalize("NFKD", filename).encode("ASCII", "ignore").decode()
-    )
+    cleaned: str = unicodedata.normalize("NFKD", s).encode("ASCII", "ignore").decode()
 
     # keep only whitelisted chars
-    whitelist: str = ":/\"'|-_.() %s%s" % (string.ascii_letters, string.digits)
-    cleaned_filename: str = "".join(c for c in cleaned_filename if c in whitelist)
-    return cleaned_filename[:255]
+    whitelist: str = "%s%s%s%s" % (
+        string.ascii_letters,
+        string.digits,
+        string.punctuation,
+        " ",
+    )
+    cleaned: str = "".join(c for c in cleaned if c in whitelist)
+    return cleaned[:255]
 
 
 def get_dumping_dir() -> Path:
@@ -40,7 +43,7 @@ def to_markdown_link(event: Visit) -> str:
     if event.metadata is None:
         return f"<{event.url}>"
     if "file://" in event.url:
-        return f"*{event.url.rstrip('file://')}*"
+        return f"*{clean(event.url.rstrip('file://'))}*"
     if len(event.metadata.title) > 0:
         return f"[{clean(event.metadata.title)}]({quote_plus(event.url)})"
 
