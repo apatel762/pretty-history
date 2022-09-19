@@ -14,7 +14,7 @@ def test_version():
     assert __version__ == "1.0.3"
 
 
-def test_dump_correctly(tmp_path: Path, monkeypatch: object):
+def test_dump_correctly(tmp_path: Path):
     """
     Given an example input, ensure that the output is exactly as expected.
     """
