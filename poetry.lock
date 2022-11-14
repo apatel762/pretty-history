@@ -44,7 +44,7 @@ python-versions = "*"
 
 [[package]]
 name = "browserexport"
-version = "0.2.7"
+version = "0.2.8"
 description = "save and merge browser history and metadata from different browsers"
 category = "main"
 optional = false
@@ -505,7 +505,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "57f1a969cb74b95f9f797432d5201ec2c9ff157a927b949fc12da90b761ca745"
+content-hash = "4b9fdece5d6829dedb89383001a2dc14548bc1d513415799b332a9d5f6d26a3b"
 
 [metadata.files]
 appnope = [
@@ -525,8 +525,8 @@ backcall = [
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
 ]
 browserexport = [
-    {file = "browserexport-0.2.7-py3-none-any.whl", hash = "sha256:4a470a757fed604be51a3b41ad4911422ea8478a479ec64df384fd303f654e2d"},
-    {file = "browserexport-0.2.7.tar.gz", hash = "sha256:b0747209fc6d81a9492838ee768b918d189ad81155e0007d2c1f2afa71194b9d"},
+    {file = "browserexport-0.2.8-py3-none-any.whl", hash = "sha256:cfed153099496df1de07046e957d155cd88cea0cc477221955d7e4917f607997"},
+    {file = "browserexport-0.2.8.tar.gz", hash = "sha256:e8bba6dacc093994bfc83b05947914f18054aa91d2c3858760f52d3fcadd290c"},
 ]
 cfgv = [
     {file = "cfgv-3.3.1-py2.py3-none-any.whl", hash = "sha256:c6a0883f3917a037485059700b9e75da2464e6c27051014ad85ba6aaa5884426"},
