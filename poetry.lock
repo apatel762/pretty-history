@@ -44,7 +44,7 @@ python-versions = "*"
 
 [[package]]
 name = "browserexport"
-version = "0.2.8"
+version = "0.2.9"
 description = "save and merge browser history and metadata from different browsers"
 category = "main"
 optional = false
@@ -54,7 +54,7 @@ python-versions = ">=3.7"
 click = ">=8.0"
 IPython = "*"
 logzero = "*"
-sqlite-backup = ">=0.1.4"
+sqlite-backup = ">=0.1.6"
 
 [package.extras]
 testing = ["flake8", "mypy", "pytest"]
@@ -420,18 +420,18 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "sqlite-backup"
-version = "0.1.4"
+version = "0.1.6"
 description = "A tool to copy sqlite databases you don't own"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
-click = ">=7.0"
+click = ">=8.0"
 logzero = "*"
 
 [package.extras]
-testing = ["mypy", "pytest", "pytest-reraise"]
+testing = ["flake8", "mypy", "pytest", "pytest-reraise"]
 
 [[package]]
 name = "stack-data"
@@ -496,7 +496,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "2ec67f85821055bd8e7e42f9ecca7d00ab216b68ccc6223a46423f688e5e07d8"
+content-hash = "08b22e5ef79f4df073abe4fde9bf5592c163a92a56fb79c8fb6b7fe30789481a"
 
 [metadata.files]
 appnope = [
@@ -516,8 +516,8 @@ backcall = [
     {file = "backcall-0.2.0.tar.gz", hash = "sha256:5cbdbf27be5e7cfadb448baf0aa95508f91f2bbc6c6437cd9cd06e2a4c215e1e"},
 ]
 browserexport = [
-    {file = "browserexport-0.2.8-py3-none-any.whl", hash = "sha256:cfed153099496df1de07046e957d155cd88cea0cc477221955d7e4917f607997"},
-    {file = "browserexport-0.2.8.tar.gz", hash = "sha256:e8bba6dacc093994bfc83b05947914f18054aa91d2c3858760f52d3fcadd290c"},
+    {file = "browserexport-0.2.9-py3-none-any.whl", hash = "sha256:bbd19a62a54ef4bcea87f54b101d25b03ed3fb47db8001b75502833d1693b7a1"},
+    {file = "browserexport-0.2.9.tar.gz", hash = "sha256:6fb4efbb515f86397a2f18cbe97af2f9f7de75735edf6be7051e722300a63d28"},
 ]
 cfgv = [
     {file = "cfgv-3.3.1-py2.py3-none-any.whl", hash = "sha256:c6a0883f3917a037485059700b9e75da2464e6c27051014ad85ba6aaa5884426"},
@@ -682,8 +682,8 @@ six = [
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 sqlite-backup = [
-    {file = "sqlite_backup-0.1.4-py3-none-any.whl", hash = "sha256:a0f407a2c7fb19eb00eb7ba6b57ea7b8fe3f31f495d878b88a62bf0ad1a0a270"},
-    {file = "sqlite_backup-0.1.4.tar.gz", hash = "sha256:6f0107f5761d28e9c7abe5ea8c6d4be3d60fad18f1350a0f5821a2c100a72415"},
+    {file = "sqlite_backup-0.1.6-py3-none-any.whl", hash = "sha256:d7ae21e53fe4100925ea0996718da2b03865babab0f9db96467ce4726a6bcced"},
+    {file = "sqlite_backup-0.1.6.tar.gz", hash = "sha256:1211a2ffa2c29e446271b3b374a125847a14fa3c36380532bc3d864e60073314"},
 ]
 stack-data = [
     {file = "stack_data-0.5.0-py3-none-any.whl", hash = "sha256:66d2ebd3d7f29047612ead465b6cae5371006a71f45037c7e2507d01367bce3b"},

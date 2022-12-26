@@ -12,7 +12,7 @@ prettyhist = "pretty_history.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-browserexport = "^0.2.8"
+browserexport = "^0.2.9"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^2.21.0"
