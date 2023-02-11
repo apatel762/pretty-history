@@ -28,7 +28,7 @@ browserexport merge --json ./*.sqlite > ./history.json
 prettyhist ./history.json
 ```
 
-Extracting history directly from the browser is still a work-in-progress, see #1.
+Extracting history directly from the browser is still a work-in-progress, see https://github.com/apatel762/pretty-history/issues/1.
 
 ## References
 
