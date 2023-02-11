@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pretty-history"
-version = "1.0.6" # don't forget to update code & git tags
+version = "1.0.7" # don't forget to update code & git tags
 description = "Generate a pretty view of your browser history from a JSON export"
 authors = ["Arjun Patel <relay-git-1LKQ1GqLp0Nn4@aspatel.com>"]
 license = "AGPL-3.0-or-later"

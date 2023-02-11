@@ -11,7 +11,7 @@ GENERAL_OUT: str = os.path.join("tests", "resources", "general_out.md")
 
 
 def test_version():
-    assert __version__ == "1.0.6"
+    assert __version__ == "1.0.7"
 
 
 def test_dump_correctly(tmp_path: Path):
