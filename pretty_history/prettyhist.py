@@ -51,12 +51,11 @@ def get_dumping_dir() -> Path:
 
 
 def to_markdown_link(event: Visit) -> str:
-    if event.metadata is None:
-        return f"<{event.url}>"
     if "file://" in event.url:
         return f"*{clean(event.url.lstrip('file://'))}*"
-    if len(event.metadata.title) > 0:
+    if event.metadata is not None and event.metadata.title is not None and len(event.metadata.title) > 0:
         return f"[{clean(event.metadata.title)}]({clean_url(url=event.url)})"
+    return f"<{event.url}>"  # default
 
 
 def prettify(history_json: Path, dumping_folder: Optional[Path]) -> None:
