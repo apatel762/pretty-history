@@ -2,12 +2,18 @@ import os.path
 import platform
 from pathlib import Path
 from unittest.mock import MagicMock
+from unittest.mock import Mock
+
+from browserexport.browsers.firefox import Firefox
 
 import pretty_history.prettyhist
 from pretty_history import __version__
 
-GENERAL_IN: str = os.path.join("tests", "resources", "general_in.json")
+GENERAL_IN_FILE: str = os.path.join("tests", "resources", "general_in_file.json")
 GENERAL_OUT: str = os.path.join("tests", "resources", "general_out.md")
+
+BROWSER = "firefox"
+GENERAL_IN_DB: str = os.path.join("tests", "resources", "general_in_db.sqlite")
 
 
 def test_version():
@@ -21,14 +27,19 @@ def test_dump_correctly(tmp_path: Path):
     platform.node = MagicMock(return_value="hostname_of_computer")
     os.path.abspath = MagicMock(return_value="/path/to/the/script.py")
 
+    Firefox.locate_database = Mock(return_value=GENERAL_IN_DB)
+
     pretty_history.prettyhist.prettify(
-        history_json=Path(GENERAL_IN), dumping_folder=tmp_path
+        history_json=Path(GENERAL_IN_FILE),
+        dumping_folder=tmp_path,
+        browser=BROWSER,
+        browser_profile="*",
     )
 
     expected: str = __read_file_contents(file_path=GENERAL_OUT)
     actual: str = __read_file_contents(
         file_path=os.path.join(
-            tmp_path, "September 10, 2022, online browsing history.md"
+            tmp_path, "February 11, 2023, online browsing history.md"
         )
     )
 

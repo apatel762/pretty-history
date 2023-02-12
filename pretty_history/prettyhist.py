@@ -1,7 +1,7 @@
 import os
 import platform
-import string
-import unicodedata
+import sqlite3
+import sys
 from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import date
@@ -9,61 +9,90 @@ from datetime import datetime
 from pathlib import Path
 from typing import List
 from typing import Optional
-from urllib.parse import ParseResult
-from urllib.parse import quote_plus
-from urllib.parse import urlparse
+from typing import Type
 
-from browserexport.merge import read_and_merge
+import appdirs
+from browserexport.browsers.all import DEFAULT_BROWSERS
+from browserexport.browsers.common import Browser
+from browserexport.merge import merge_visits
+from browserexport.merge import read_visits
 from browserexport.model import Visit
+from sqlite_backup import sqlite_backup
+
+from . import __version__
+from . import cleaning
 
 
-def clean(s: str) -> str:
-    # keep only valid ascii chars
-    cleaned: str = unicodedata.normalize("NFKD", s).encode("ASCII", "ignore").decode()
-
-    # keep only whitelisted chars
-    whitelist: str = "%s%s%s%s" % (
-        string.ascii_letters,
-        string.digits,
-        string.punctuation,
-        " ",
+def default_output_folder() -> Path:
+    data_dir: str = appdirs.user_data_dir(
+        appname=os.path.basename(sys.argv[0]), version=__version__
     )
-    cleaned: str = "".join(c for c in cleaned if c in whitelist)
-    return cleaned[:255]
 
-
-def clean_url(url: str) -> str:
-    parsed: ParseResult = urlparse(url=url)
-    parsed._replace(
-        query=quote_plus(parsed.query), fragment=quote_plus(parsed.fragment)
-    )
-    return parsed.geturl()
-
-
-def get_dumping_dir() -> Path:
-    cache_home: str = os.getenv("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
-
-    cache_path: Path = Path(
-        f"{cache_home}/pretty_history/{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-    )
-    cache_path.mkdir(parents=True, exist_ok=True)
-    return cache_path
+    output_dir: Path = Path(data_dir) / Path(datetime.now().strftime("%Y%m%d_%H%M%S"))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    return output_dir
 
 
 def to_markdown_link(event: Visit) -> str:
     if "file://" in event.url:
-        return f"*{clean(event.url.lstrip('file://'))}*"
-    if event.metadata is not None and event.metadata.title is not None and len(event.metadata.title) > 0:
-        return f"[{clean(event.metadata.title)}]({clean_url(url=event.url)})"
+        return f"*{cleaning.clean(event.url.lstrip('file://'))}*"
+
+    if (
+        event.metadata is not None
+        and event.metadata.title is not None
+        and len(event.metadata.title) > 0
+    ):
+        return f"[{cleaning.clean(event.metadata.title)}]({cleaning.clean_url(url=event.url)})"
+
     return f"<{event.url}>"  # default
 
 
-def prettify(history_json: Path, dumping_folder: Optional[Path]) -> None:
+def from_browser(browser_name: str, profile: str = "*") -> sqlite3.Connection:
+    """
+    Return an in-memory SQLite database, containing the history data from the given browser.
+    """
+    matches = [
+        b for b in DEFAULT_BROWSERS if b.__name__.lower() == browser_name.lower()
+    ]
+    if not matches:
+        raise ValueError(f"Browser {browser_name} not found")
+
+    browser: Type[Browser] = matches[0]
+    if browser.has_save:
+        # as we are not providing an output destination here, the data
+        # will be saved in-memory
+        return sqlite_backup(source=browser.locate_database(profile))
+
+    raise ValueError(f"Browser {browser_name} doesn't know how to save database")
+
+
+def prettify(
+    history_json: Optional[Path],
+    dumping_folder: Optional[Path],
+    browser: Optional[str],
+    browser_profile: str,
+) -> None:
+    def empty():
+        yield from ()
+
+    visits: List[Visit] = list(
+        merge_visits(
+            [
+                read_visits(history_json) if history_json is not None else empty(),
+                read_visits(from_browser(browser, profile=browser_profile))
+                if browser is not None
+                else empty(),
+            ]
+        )
+    )
+
     grouped: OrderedDict[date, List[Visit]] = OrderedDict()
-    for visit in read_and_merge([history_json]):  # type: Visit
+    for visit in visits:  # type: Visit
         grouped.setdefault(visit.dt.date(), []).append(visit)
 
-    out: Path = dumping_folder if dumping_folder is not None else get_dumping_dir()
+    out: Path = (
+        dumping_folder if dumping_folder is not None else default_output_folder()
+    )
 
     for key, val in grouped.items():
         page: Page = Page(dt=key, visits=val)
