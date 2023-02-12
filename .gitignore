@@ -27,5 +27,6 @@
 !poetry.lock
 !setup.cfg
 
+!tests/resources/*.sqlite
 !tests/resources/*.json
 !tests/resources/*.md
