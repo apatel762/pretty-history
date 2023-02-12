@@ -22,13 +22,20 @@ To see some instructions for how to use it.
 
 ### Example
 
+Pretty-format browsing history from Firefox:
+
 ```bash
-browserexport save --browser firefox --to .
-browserexport merge --json ./*.sqlite > ./history.json
-prettyhist ./history.json
+prettyhist -b firefox
 ```
 
-Extracting history directly from the browser is still a work-in-progress, see https://github.com/apatel762/pretty-history/issues/1.
+Pretty-format browsing history from Firefox, merging with data from Brave Browser:
+
+```bash
+browserexport save --browser brave --to .
+browserexport merge --json ./*.sqlite > ./history.json
+
+prettyhist -b firefox -f ./history.json
+```
 
 ## References
 
