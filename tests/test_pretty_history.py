@@ -17,7 +17,7 @@ GENERAL_IN_DB: str = os.path.join("tests", "resources", "general_in_db.sqlite")
 
 
 def test_version():
-    assert __version__ == "1.0.7"
+    assert __version__ == "2.0.0"
 
 
 def test_dump_correctly(tmp_path: Path):
