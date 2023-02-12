@@ -1,5 +1,7 @@
 # pretty-history
 
+[![PyTest](https://github.com/apatel762/pretty-history/actions/workflows/pytest.yml/badge.svg)](https://github.com/apatel762/pretty-history/actions/workflows/pytest.yml) [![PyPi version](https://img.shields.io/pypi/v/browserexport.svg)](https://pypi.python.org/pypi/browserexport) [![Python 3.7|3.8|3.9](https://img.shields.io/pypi/pyversions/browserexport.svg)](https://pypi.python.org/pypi/browserexport) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
 The `pretty-history` app is a simple Python script that can be run via the command-line, and will generate Markdown files summarising your browser history.
 
 ## Installation
