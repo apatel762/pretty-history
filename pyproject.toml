@@ -17,7 +17,7 @@ appdirs = "^1.4.4"
 
 [tool.poetry.dev-dependencies]
 pre-commit = "^3.3.3"
-pytest = "^7.4.0"
+pytest = "^7.4.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
