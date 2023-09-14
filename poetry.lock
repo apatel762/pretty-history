@@ -13,13 +13,13 @@ files = [
 
 [[package]]
 name = "browserexport"
-version = "0.4.0"
+version = "0.4.1"
 description = "save and merge browser history and metadata from different browsers"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "browserexport-0.4.0-py3-none-any.whl", hash = "sha256:8293b41aaa31b9ac063daf759c8896110e53dc40ec7860dbafaf2b41ee7aa767"},
-    {file = "browserexport-0.4.0.tar.gz", hash = "sha256:cda3aeea70fd689e87ffc67205d1a4184ce1abeb9aabe3b8f925129f73045a47"},
+    {file = "browserexport-0.4.1-py3-none-any.whl", hash = "sha256:18ad8f799a7e88f12411c76291dc1e5eeff90737a6679a60de029955bcf0a20d"},
+    {file = "browserexport-0.4.1.tar.gz", hash = "sha256:cdda26c23bdad8ceb394e3568e2233687b0874d342cbe72b2cd842321fed288d"},
 ]
 
 [package.dependencies]
