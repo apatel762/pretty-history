@@ -16,7 +16,7 @@ browserexport = ">=0.2.10,<0.5.0"
 appdirs = "^1.4.4"
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^3.4.0"
+pre-commit = "^3.5.0"
 pytest = "^7.4.2"
 
 [build-system]
