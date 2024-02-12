@@ -13,17 +13,18 @@ files = [
 
 [[package]]
 name = "browserexport"
-version = "0.4.1"
+version = "0.4.2"
 description = "save and merge browser history and metadata from different browsers"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "browserexport-0.4.1-py3-none-any.whl", hash = "sha256:18ad8f799a7e88f12411c76291dc1e5eeff90737a6679a60de029955bcf0a20d"},
-    {file = "browserexport-0.4.1.tar.gz", hash = "sha256:cdda26c23bdad8ceb394e3568e2233687b0874d342cbe72b2cd842321fed288d"},
+    {file = "browserexport-0.4.2-py3-none-any.whl", hash = "sha256:3b8bf4226f3173e5e38317eaed7b8d3e3952e11735d25f5420c7db78d0be76a8"},
+    {file = "browserexport-0.4.2.tar.gz", hash = "sha256:324cc76a6d5a3d755416eedc2fefd0aee078568132c6a8aa0c31134cc7f81e55"},
 ]
 
 [package.dependencies]
 click = ">=8.1"
+kompress = ">=0.1.20231016"
 logzero = "*"
 sqlite-backup = ">=0.1.7"
 
@@ -130,6 +131,22 @@ files = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
 ]
+
+[[package]]
+name = "kompress"
+version = "0.1.20231016"
+description = "pathlib.Path adapters to transparently read data from compressed files and folders"
+optional = false
+python-versions = "*"
+files = [
+    {file = "kompress-0.1.20231016-py3-none-any.whl", hash = "sha256:46953beee3172a88814791dbc2cddfe08daceb5fefc04f8d93dc7b5a3c53e110"},
+    {file = "kompress-0.1.20231016.tar.gz", hash = "sha256:c0416903b2f678cc0fd7a48fed879bcaba5f88a223ca70633de1e389e8b85394"},
+]
+
+[package.extras]
+lz4 = ["lz4"]
+testing = ["lxml", "mypy", "pytest", "ruff"]
+zstd = ["zstandard"]
 
 [[package]]
 name = "logzero"
