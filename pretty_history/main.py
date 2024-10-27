@@ -47,7 +47,7 @@ def main():
         required=False,
         metavar="./my_history.json",
         help="The absolute or relative path to the JSON file containing your browser history. The schema of the JSON "
-        "file should match the output from 'seanbreckenridge/browserexport'.",
+        "file should match the output from 'purarue/browserexport'.",
     )
     parser.add_argument(
         OPT_DESTINATION_FOLDER,
