@@ -41,4 +41,4 @@ prettyhist -b firefox -f ./history.json
 
 ## References
 
-1. [seanbreckenridge/browserexport](https://github.com/seanbreckenridge/browserexport)
+1. [purarue/browserexport](https://github.com/purarue/browserexport)
